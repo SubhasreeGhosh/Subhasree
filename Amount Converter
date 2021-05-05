@@ -1,0 +1,64 @@
+from tkinter import Tk , Button, Label,DoubleVar,Entry
+
+window=Tk()
+
+window.title("Amount Converter")
+window.configure(background="yellow")
+window.geometry("400x225")
+window.resizable(width=False,height=False)
+
+
+
+
+def convert():
+    value1 = float(amt_entry.get())
+    value2 = float(cnv_entry.get())
+    value3 = (value1 * value2)/100
+    cnvd_value.set("%.4f"%value3)
+
+def clear():
+    amt_value.set("")
+    cnv_value.set("")
+
+
+#LABEL 1
+amt_lb1 = Label(window,text="Amount to Convert",bg="yellow",fg="black",width=14)
+amt_lb1.place(x=90,y=90)
+amt_lb1.grid(column=0,row=0,padx=15,pady=15)
+amt_value = DoubleVar()
+amt_entry = Entry(window,textvariable=amt_value,width=14)
+amt_entry.grid(column=1,row=0)
+amt_entry.delete(0,"end")
+
+
+
+
+
+
+#LABEL 2
+cnv_lb = Label(window,text="Conversion Rate",bg="yellow",fg="black",width=14)
+cnv_lb.place(x=90,y=90)
+cnv_lb.grid(column=0,row=1,padx=15,pady=15)
+cnv_value = DoubleVar()
+cnv_entry = Entry(window,textvariable=cnv_value,width=14)
+cnv_entry.grid(column=1,row=1)
+cnv_entry.delete(0,"end")
+
+
+#LABEL 3
+cnvd_lb = Label(window,text="Converted Amount",bg="purple",fg="white",width=14)
+cnvd_lb.place(x=90,y=90)
+cnvd_lb.grid(column=0,row=2,padx=15,pady=15)
+cnvd_value = DoubleVar()
+cnvd_entry = Entry(window,textvariable=cnvd_value,width=14)
+cnvd_entry.grid(column=1,row=2)
+cnvd_entry.delete(0,"end")
+
+
+cnvrt_btn = Button(window,text="convert",bg="blue",fg="white",width=14,command=convert)
+cnvrt_btn.grid(column=1,row=3,padx=15)
+
+clear_btn = Button(window,text="clear",bg="black",fg="white",width=14,command=clear)
+clear_btn.grid(column=2,row=3,padx=15)
+
+window.mainloop()
